@@ -1,3 +1,8 @@
-#body-container {
-  background-color: aqua;
+.titulo {
+  font-size: 150px;
+  text-align: center;
+}
+.parrafo {
+  font-size: 30px;
+  text-align: justify;
 }
