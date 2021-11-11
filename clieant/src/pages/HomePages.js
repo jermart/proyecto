@@ -1,9 +1,38 @@
 import React, { Fragment, useState } from "react";
+import Axios from "axios";
+import Swal from "sweetalert2";
 
 export default function HomePages() {
   const [file, setFile] = useState(null);
   const [img, setimg] = useState([]);
-  // const [text, setText] = useState("");
+  const [firstname, setfirstname] = useState("");
+  const [lastname, setlastname] = useState("");
+  const [password, setpassword] = useState("");
+  const [email, setemail] = useState("");
+
+  const login = async (e) => {
+    e.preventDefault();
+    const usuario = { firstname, lastname, password, email };
+    const respuesta = await Axios.post("/new-user", usuario);
+
+    console.log(respuesta.data);
+
+    if (respuesta.data.mensaje) {
+      Swal.fire({
+        icon: "error",
+        text: `${respuesta.data.mensaje}`,
+        timer: 1800,
+      });
+
+      document.getElementById("registro").reset();
+    } else {
+      Swal.fire({
+        icon: "success",
+        text: "Registrado exitosamente",
+        timer: 1800,
+      });
+    }
+  };
 
   const selectedHandler = (e) => {
     setFile(e.target.files[0]);
@@ -77,6 +106,114 @@ export default function HomePages() {
             alt="..."
             className="card-img-top"
           />
+        </div>
+      </div>
+
+      {/* <div className="container">
+        <div className=" input-group mb-3">
+          <form className="form-control">
+            <div className="row">
+              <label>Ingrese su nombre</label>
+
+              <input
+                className="mb-3"
+                placeholder="ingrese su nombre"
+                type="text"
+              />
+              <label>Ingrese su apellido</label>
+
+              <input
+                className="mb-3"
+                placeholder="ingrese su apellido"
+                type="text"
+              />
+              <label>ingrese su correo</label>
+
+              <input className="mb-3" placeholder="correo" type="correo" />
+              <label>Ingrese su password</label>
+
+              <input
+                className="mb-3"
+                placeholder="ingrese su password"
+                type="password"
+              />
+              <label className="input-group-text " htmlFor="inputGroupSelect01">
+                Role que quieres:
+              </label>
+              <select className="form-select mb-3" id="inputGroupSelect01">
+                <option selected>Role que quieres: </option>
+                <option value="regular">Usuario</option>
+                <option value="creador">creador</option>
+              </select>
+            </div>
+            <button className="btn btn-info" type="subtmi">
+              registrar
+            </button>
+          </form>
+        </div>
+      </div> */}
+
+      <div className="container mt-4">
+        <div className="row">
+          <div className="col-md-5 mx-auto">
+            <div className="card">
+              <div className=" container text-center fa-5x">
+                <i className=" fas fa-user"></i>
+              </div>
+              <div className="card-header text-center">
+                <h3> Registro de sesion</h3>
+              </div>
+              <div className="card-body">
+                <form onSubmit={login} id="registro">
+                  <div className="form-group">
+                    <label> Fistname</label>
+                    <input
+                      id="Fistname"
+                      type="text"
+                      className="form-control"
+                      required
+                      onChange={(e) => setfirstname(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label> lastname</label>
+                    <input
+                      id="lastname"
+                      type="text"
+                      className="form-control"
+                      required
+                      onChange={(e) => setlastname(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label> password</label>
+                    <input
+                      id="password"
+                      type="password"
+                      className="form-control"
+                      required
+                      onChange={(e) => setpassword(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label> Correo</label>
+                    <input
+                      id="Correo"
+                      type="email"
+                      className="form-control"
+                      autoFocus
+                      required
+                      onChange={(e) => setemail(e.target.value)}
+                    />
+                  </div>
+                  <input
+                    type="submit"
+                    className="btn btn-primary btn-block mt-3"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Fragment>

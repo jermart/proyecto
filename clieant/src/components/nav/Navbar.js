@@ -51,7 +51,7 @@ const Navbar = ({ isScroll }) => {
             </li>
             <li className="nav-item">
               <La className="nav-link" aria-current="page" to="!#">
-                Cuenta
+                Login
               </La>
             </li>
           </ul>
