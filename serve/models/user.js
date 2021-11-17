@@ -15,6 +15,14 @@ const UserSchema = new Schema({
   email: { type: String, required: true, unique: true, index: true },
   role: { type: String, default: "regular" },
   img: { type: String },
+  telefono: { type: String },
+  idiomas: { type: String },
+  referencias: { type: String },
+  talento: { type: String },
+  introduccion: { type: String },
+  experiencia: { type: String },
+  educacion: { type: String },
+  profesion: { type: String },
 });
 
 UserSchema.pre("save", function (next) {

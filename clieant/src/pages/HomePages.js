@@ -1,21 +1,24 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 import Swal from "sweetalert2";
 
 export default function HomePages() {
   const [file, setFile] = useState(null);
-  const [img, setimg] = useState([]);
+  const [img, setimg] = useState("");
+  const [swith, setswith] = useState(false);
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
   const [password, setpassword] = useState("");
   const [email, setemail] = useState("");
 
   const login = async (e) => {
-    e.preventDefault();
-    const usuario = { firstname, lastname, password, email };
-    const respuesta = await Axios.post("/new-user", usuario);
+    document.getElementById("fileinput").value = null;
+    setFile(null);
 
-    console.log(respuesta.data);
+    e.preventDefault();
+    const usuario = { firstname, lastname, password, email, img };
+    const respuesta = await Axios.post("/new-user", usuario);
 
     if (respuesta.data.mensaje) {
       Swal.fire({
@@ -44,6 +47,8 @@ export default function HomePages() {
       return;
     }
 
+    setswith(true);
+
     const formdata = new FormData();
     formdata.append("image", file);
 
@@ -56,18 +61,15 @@ export default function HomePages() {
       .catch((err) => {
         console.error(err);
       });
-
-    document.getElementById("fileinput").value = null;
-    setFile(null);
   };
 
   return (
     <Fragment>
       <nav className="navbar navbar-dark bg-dark">
         <div className="container">
-          <a href="#!" className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             Image App
-          </a>
+          </Link>
         </div>
       </nav>
       <form>
@@ -153,69 +155,71 @@ export default function HomePages() {
         </div>
       </div> */}
 
-      <div className="container mt-4">
-        <div className="row">
-          <div className="col-md-5 mx-auto">
-            <div className="card">
-              <div className=" container text-center fa-5x">
-                <i className=" fas fa-user"></i>
-              </div>
-              <div className="card-header text-center">
-                <h3> Registro de sesion</h3>
-              </div>
-              <div className="card-body">
-                <form onSubmit={login} id="registro">
-                  <div className="form-group">
-                    <label> Fistname</label>
+      {swith && (
+        <div className="container mt-4">
+          <div className="row">
+            <div className="col-md-5 mx-auto">
+              <div className="card">
+                <div className=" container text-center fa-5x">
+                  <i className=" fas fa-user"></i>
+                </div>
+                <div className="card-header text-center">
+                  <h3> Registro de sesion</h3>
+                </div>
+                <div className="card-body">
+                  <form onSubmit={login} id="registro">
+                    <div className="form-group">
+                      <label> Fistname</label>
+                      <input
+                        id="Fistname"
+                        type="text"
+                        className="form-control"
+                        required
+                        onChange={(e) => setfirstname(e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label> lastname</label>
+                      <input
+                        id="lastname"
+                        type="text"
+                        className="form-control"
+                        required
+                        onChange={(e) => setlastname(e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label> password</label>
+                      <input
+                        id="password"
+                        type="password"
+                        className="form-control"
+                        required
+                        onChange={(e) => setpassword(e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label> Correo</label>
+                      <input
+                        id="Correo"
+                        type="email"
+                        className="form-control"
+                        autoFocus
+                        required
+                        onChange={(e) => setemail(e.target.value)}
+                      />
+                    </div>
                     <input
-                      id="Fistname"
-                      type="text"
-                      className="form-control"
-                      required
-                      onChange={(e) => setfirstname(e.target.value)}
+                      type="submit"
+                      className="btn btn-primary btn-block mt-3"
                     />
-                  </div>
-                  <div className="form-group">
-                    <label> lastname</label>
-                    <input
-                      id="lastname"
-                      type="text"
-                      className="form-control"
-                      required
-                      onChange={(e) => setlastname(e.target.value)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label> password</label>
-                    <input
-                      id="password"
-                      type="password"
-                      className="form-control"
-                      required
-                      onChange={(e) => setpassword(e.target.value)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label> Correo</label>
-                    <input
-                      id="Correo"
-                      type="email"
-                      className="form-control"
-                      autoFocus
-                      required
-                      onChange={(e) => setemail(e.target.value)}
-                    />
-                  </div>
-                  <input
-                    type="submit"
-                    className="btn btn-primary btn-block mt-3"
-                  />
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </Fragment>
   );
 }

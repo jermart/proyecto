@@ -40,7 +40,7 @@ const Navbar = ({ isScroll }) => {
               </La>
             </li>
             <li className="nav-item">
-              <La className="nav-link" aria-current="page" to="!#">
+              <La className="nav-link" aria-current="page" to="/cuenta">
                 Cuenta
               </La>
             </li>
@@ -50,7 +50,7 @@ const Navbar = ({ isScroll }) => {
               </La>
             </li>
             <li className="nav-item">
-              <La className="nav-link" aria-current="page" to="!#">
+              <La className="nav-link" aria-current="page" to="/login">
                 Login
               </La>
             </li>
