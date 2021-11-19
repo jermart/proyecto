@@ -42,6 +42,7 @@ router.post("/auth-user", async (req, res) => {
           id: LoginUser._id,
           firstname: LoginUser.firstname,
           lastname: LoginUser.lastname,
+          email: LoginUser.email,
           role: LoginUser.role,
         });
       }
@@ -76,6 +77,16 @@ router.post("/updatUser", async (req, res) => {
     });
     console.log(updateUser);
   } catch (error) {}
+});
+
+router.get("/engineer-all", async (req, res) => {
+  try {
+    const engineerAll = await User.find({ role: "ingeniero" });
+    console.log(engineerAll);
+    res.json({ engineerAll });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // con esta función pudo solo actualizar un campo y no necesito enviar mas información.

@@ -31,6 +31,7 @@ const LoginUser = () => {
       sessionStorage.setItem("firstname", respuesta.data.firstname);
       sessionStorage.setItem("lastname", respuesta.data.lastname);
       sessionStorage.setItem("role", respuesta.data.role);
+      sessionStorage.setItem("email", respuesta.data.email);
 
       console.log(respuesta.data);
     }

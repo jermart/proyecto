@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, "images")));
 
 app.use(require("./routes/User"));
 app.use(require("./routes/img"));
+app.use(require("./routes/mensaje"));
 
 app.listen(9000, () => {
   console.log(" server running", "http://localhost:" + 9000);

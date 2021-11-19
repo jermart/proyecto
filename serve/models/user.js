@@ -23,6 +23,7 @@ const UserSchema = new Schema({
   experiencia: { type: String },
   educacion: { type: String },
   profesion: { type: String },
+  creado: { type: String, default: "false" },
 });
 
 UserSchema.pre("save", function (next) {

@@ -15,6 +15,7 @@ const Navbar = ({ isScroll }) => {
         </div>
       </nav>
       <ModalNavbar estado={isOpen} cambiar={setOpen} /> */}
+
       <nav className="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
         <div className="container-fluid container ">
           <a className="navbar-brand" href="!#">
@@ -45,7 +46,7 @@ const Navbar = ({ isScroll }) => {
               </La>
             </li>
             <li className="nav-item">
-              <La className="nav-link" aria-current="page" to="!#">
+              <La className="nav-link" aria-current="page" to="/proyectos">
                 Proyectos
               </La>
             </li>
@@ -54,16 +55,21 @@ const Navbar = ({ isScroll }) => {
                 Login
               </La>
             </li>
+            <li className="nav-item">
+              <La className="nav-link" aria-current="page" to="/presentacion">
+                Presentación
+              </La>
+            </li>
           </ul>
         </div>
       </nav>
       {/* <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="!#">
-            Navbar
-          </a>
-          <button
-            className="navbar-toggler"
+        <a className="navbar-brand" href="!#">
+        Navbar
+        </a>
+        <button
+        className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown"
@@ -75,57 +81,57 @@ const Navbar = ({ isScroll }) => {
           </button>
           <div classNameclass="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="!#">
+            <li className="nav-item">
+            <a className="nav-link active" aria-current="page" href="!#">
                   Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+                  </a>
+                  </li>
+                  <li className="nav-item">
+                  <a className="nav-link" href="#">
                   Features
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Pricing
+                Pricing
                 </a>
               </li>
               <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown link
-                </a>
-                <ul
-                  className="dropdown-menu"
+              <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              >
+              Dropdown link
+              </a>
+              <ul
+              className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
-                >
+                  >
                   <li>
-                    <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="#">
                       Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
+                      </a>
+                      </li>
+                      <li>
+                      <a className="dropdown-item" href="#">
                       Another action
-                    </a>
-                  </li>
-                  <li>
+                      </a>
+                      </li>
+                      <li>
                     <a className="dropdown-item" href="#">
-                      Something else here
+                    Something else here
                     </a>
-                  </li>
+                    </li>
                 </ul>
-              </li>
-            </ul>
+                </li>
+                </ul>
           </div>
-        </div>
-      </nav> */}
+          </div>
+        </nav> */}
     </>
   );
 };

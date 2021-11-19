@@ -15,10 +15,13 @@ const Cuenta = () => {
   const [experiencia, setexperiencia] = useState("");
   const [educacion, seteducacion] = useState("");
   const [profesion, setprofesion] = useState("");
+  const [creado, setcreado] = useState("false");
 
   const usuario = sessionStorage.getItem("usuarioId");
   const nombre = sessionStorage.getItem("firstname");
   const apellido = sessionStorage.getItem("lastname");
+
+  console.log(creado);
 
   // console.log(firstname);
   // console.log(usuario);
@@ -35,6 +38,8 @@ const Cuenta = () => {
   const userHold = async (e) => {
     e.preventDefault();
 
+    setcreado("true");
+
     const update = {
       id,
       firstname,
@@ -48,6 +53,7 @@ const Cuenta = () => {
       experiencia,
       educacion,
       profesion,
+      creado,
     };
 
     const respuesta = await Axios.post("/updatUser", update);
